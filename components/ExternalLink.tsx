@@ -2,6 +2,7 @@ import { Link } from 'expo-router';
 import * as WebBrowser from 'expo-web-browser';
 import React from 'react';
 import { Platform } from 'react-native';
+import { WebView } from 'react-native-webview';
 
 export function ExternalLink(
   props: Omit<React.ComponentProps<typeof Link>, 'href'> & { href: string }
@@ -23,3 +24,15 @@ export function ExternalLink(
     />
   );
 }
+export function webViewOpen(
+  props: Omit<React.ComponentProps<typeof Link>, 'href'> & { href: string }
+) {
+  return (
+    <WebView
+      //target="_blank"     {...props}
+      source={{ uri:props.href as string}}
+      
+    />
+  );
+}
+ 

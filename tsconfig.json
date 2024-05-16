@@ -12,6 +12,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".expo/types/**/*.ts",
-    "expo-env.d.ts"
-  ]
+    "expo-env.d.ts", "app/qrscannerscreen.js", "app/qrscannerscreen.js",
+    "react-native-qrcode-local-image.d.ts"
+    ]
 }
