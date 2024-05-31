@@ -14,7 +14,11 @@
   },
   "dependencies": {
     "@expo/vector-icons": "^14.0.0",
+    "@mdi/js": "^7.4.47",
+    "@mdi/react": "^1.6.1",
     "@react-navigation/native": "^6.0.2",
+    "@rneui/base": "^4.0.0-rc.8",
+    "@rneui/themed": "^4.0.0-rc.8",
     "expo": "~51.0.9",
     "expo-font": "~12.0.6",
     "expo-linking": "~6.3.1",

@@ -2,13 +2,27 @@ import { StyleSheet } from 'react-native';
 
 import EditScreenInfo from '@/components/EditScreenInfo';
 import { Text, View } from '@/components/Themed';
+import { Button, Card, Icon } from '@rneui/themed';
 
-export default function TabOneScreen() {
+export default function HomeScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab One</Text>
-      <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
+       <Card>
+          <Card.Title>Welcome to Scan Sign Technology</Card.Title>
+          <Card.Divider />
+          <Card.Image
+            style={{ padding: 0}}
+            source={{
+              uri:
+                require("../../assets/images/welcome.jpg"),
+            }}
+          />
+          <Text style={{ marginBottom: 10 }}>
+            The idea with React Native Elements is more about component
+            structure than actual design.
+          </Text>
+          
+        </Card>
     </View>
   );
 }
