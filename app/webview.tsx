@@ -63,6 +63,12 @@ export default function WebViewScreen(props: { url: string }) {
       icon: <FontAwesome5 name="firefox-browser" size={30} color="#cfbe27" />,
       function: "openwithbrowser",
     },
+    {
+      id: 4,
+      name: "Refresh",
+      icon: <FontAwesome name="refresh" size={30} color="#439ce0" />,
+      function: "refresh",
+    },
   ];
   //prop of open or close overlay
   const [visible, setVisible] = useState(false);
@@ -81,6 +87,7 @@ export default function WebViewScreen(props: { url: string }) {
   function webViewgoback() {
     if (latestlink !== null && ref.current != null) {
       ref.current.goBack();
+      
     } else {
       router.back();
     }
@@ -105,6 +112,10 @@ export default function WebViewScreen(props: { url: string }) {
     }else if (functionname == "openwithbrowser") {
       let result = await Linking.openURL( latestlink == null ? (link as string) : latestlink);
       //console.log(result);
+      
+    }else if(functionname == "refresh"){
+      //refresh == reload current link
+      ref.current.reload(latestlink == null ? link : latestlink );
     }
     toggleOverlay
   }
