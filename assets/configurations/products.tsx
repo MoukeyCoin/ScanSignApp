@@ -1,0 +1,48 @@
+const Products = [
+  {
+    key: 1,
+    name: "Scan Sign Sollar Light",
+    link: "https://www.amazon.ca/Joomer-Waterproof-Landscape-Lighting-Decoration/dp/B0CTMQGF93/ref=sxin_15_pa_sp_search_thematic_sspa?content-id=amzn1.sym.23269ab4-b11d-4114-b934-dcff20797bdc%3Aamzn1.sym.23269ab4-b11d-4114-b934-dcff20797bdc&crid=30YQPGFCL3Z67&cv_ct_cx=solar+lights&dib=eyJ2IjoiMSJ9.VeNAnH4P8cLVaQ6RGPzq7G38dhNuK9B48eHejlSYegpbJduhrR_AYi0yjiByrmI4du3czoRUGKYoOfjGPhpfzg.-oKRrZSVdtagEBaLp6TvsjL4gXA4-63UDEH82V8bNAQ&dib_tag=se&keywords=solar+lights&pd_rd_i=B0CTMQGF93&pd_rd_r=5124545c-1f85-47e7-9d9e-16034734ad29&pd_rd_w=Mhhf6&pd_rd_wg=0LbiV&pf_rd_p=23269ab4-b11d-4114-b934-dcff20797bdc&pf_rd_r=STAP9BAZ2PN47F5K7G2H&qid=1717655765&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&sprefix=solloar%2Caps%2C349&sr=1-2-e85518be-6d02-428d-a376-352634690690-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9zZWFyY2hfdGhlbWF0aWM&psc=1",
+    title: "Scan Sign Sollar Light",
+    description:"    Joomer 4-Pack Solar Lights",
+    image: require("../images/Products/solarlights.jpg"),
+    price: "$10",
+  },
+  {
+    key: 2,
+    name: "Scan Sign Sollar Light",
+    link: "https://www.amazon.ca/Joomer-Waterproof-Landscape-Lighting-Decoration/dp/B0CTMQGF93/ref=sxin_15_pa_sp_search_thematic_sspa?content-id=amzn1.sym.23269ab4-b11d-4114-b934-dcff20797bdc%3Aamzn1.sym.23269ab4-b11d-4114-b934-dcff20797bdc&crid=30YQPGFCL3Z67&cv_ct_cx=solar+lights&dib=eyJ2IjoiMSJ9.VeNAnH4P8cLVaQ6RGPzq7G38dhNuK9B48eHejlSYegpbJduhrR_AYi0yjiByrmI4du3czoRUGKYoOfjGPhpfzg.-oKRrZSVdtagEBaLp6TvsjL4gXA4-63UDEH82V8bNAQ&dib_tag=se&keywords=solar+lights&pd_rd_i=B0CTMQGF93&pd_rd_r=5124545c-1f85-47e7-9d9e-16034734ad29&pd_rd_w=Mhhf6&pd_rd_wg=0LbiV&pf_rd_p=23269ab4-b11d-4114-b934-dcff20797bdc&pf_rd_r=STAP9BAZ2PN47F5K7G2H&qid=1717655765&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&sprefix=solloar%2Caps%2C349&sr=1-2-e85518be-6d02-428d-a376-352634690690-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9zZWFyY2hfdGhlbWF0aWM&psc=1",
+    title: "Scan Sign Sollar Light",
+    description:"    Joomer 4-Pack Solar Lights Outdoor Pathway Lights Waterproof LED Landscape Lighting for Garden, Lawn, Walkway, and Driveway Decoration (Warm White)",
+    image: require("../images/Products/solarlights.jpg"),
+    price: "$10",
+  },
+  {
+    key: 3,
+    name: "Scan Sign Sollar Light",
+    link: "https://www.amazon.ca/Joomer-Waterproof-Landscape-Lighting-Decoration/dp/B0CTMQGF93/ref=sxin_15_pa_sp_search_thematic_sspa?content-id=amzn1.sym.23269ab4-b11d-4114-b934-dcff20797bdc%3Aamzn1.sym.23269ab4-b11d-4114-b934-dcff20797bdc&crid=30YQPGFCL3Z67&cv_ct_cx=solar+lights&dib=eyJ2IjoiMSJ9.VeNAnH4P8cLVaQ6RGPzq7G38dhNuK9B48eHejlSYegpbJduhrR_AYi0yjiByrmI4du3czoRUGKYoOfjGPhpfzg.-oKRrZSVdtagEBaLp6TvsjL4gXA4-63UDEH82V8bNAQ&dib_tag=se&keywords=solar+lights&pd_rd_i=B0CTMQGF93&pd_rd_r=5124545c-1f85-47e7-9d9e-16034734ad29&pd_rd_w=Mhhf6&pd_rd_wg=0LbiV&pf_rd_p=23269ab4-b11d-4114-b934-dcff20797bdc&pf_rd_r=STAP9BAZ2PN47F5K7G2H&qid=1717655765&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&sprefix=solloar%2Caps%2C349&sr=1-2-e85518be-6d02-428d-a376-352634690690-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9zZWFyY2hfdGhlbWF0aWM&psc=1",
+    title: "Scan Sign Sollar Light",
+    description:"    Joomer 4-Pack Solar Lights Outdoor Pathway Lights Waterproof LED Landscape Lighting for Garden, Lawn, Walkway, and Driveway Decoration (Warm White)",
+    image: require("../images/Products/solarlights.jpg"),
+    price: "$10",
+  },
+  {
+    key: 4,
+    name: "Scan Sign Sollar Light",
+    link: "https://www.amazon.ca/Joomer-Waterproof-Landscape-Lighting-Decoration/dp/B0CTMQGF93/ref=sxin_15_pa_sp_search_thematic_sspa?content-id=amzn1.sym.23269ab4-b11d-4114-b934-dcff20797bdc%3Aamzn1.sym.23269ab4-b11d-4114-b934-dcff20797bdc&crid=30YQPGFCL3Z67&cv_ct_cx=solar+lights&dib=eyJ2IjoiMSJ9.VeNAnH4P8cLVaQ6RGPzq7G38dhNuK9B48eHejlSYegpbJduhrR_AYi0yjiByrmI4du3czoRUGKYoOfjGPhpfzg.-oKRrZSVdtagEBaLp6TvsjL4gXA4-63UDEH82V8bNAQ&dib_tag=se&keywords=solar+lights&pd_rd_i=B0CTMQGF93&pd_rd_r=5124545c-1f85-47e7-9d9e-16034734ad29&pd_rd_w=Mhhf6&pd_rd_wg=0LbiV&pf_rd_p=23269ab4-b11d-4114-b934-dcff20797bdc&pf_rd_r=STAP9BAZ2PN47F5K7G2H&qid=1717655765&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&sprefix=solloar%2Caps%2C349&sr=1-2-e85518be-6d02-428d-a376-352634690690-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9zZWFyY2hfdGhlbWF0aWM&psc=1",
+    title: "Scan Sign Sollar Light",
+    description:"    Joomer 4-Pack Solar Lights ",
+    image: require("../images/Products/solarlights.jpg"),
+    price: "$10",
+  },
+  {
+    key: 5,
+    name: "Scan Sign Sollar Light",
+    link: "https://www.amazon.ca/Joomer-Waterproof-Landscape-Lighting-Decoration/dp/B0CTMQGF93/ref=sxin_15_pa_sp_search_thematic_sspa?content-id=amzn1.sym.23269ab4-b11d-4114-b934-dcff20797bdc%3Aamzn1.sym.23269ab4-b11d-4114-b934-dcff20797bdc&crid=30YQPGFCL3Z67&cv_ct_cx=solar+lights&dib=eyJ2IjoiMSJ9.VeNAnH4P8cLVaQ6RGPzq7G38dhNuK9B48eHejlSYegpbJduhrR_AYi0yjiByrmI4du3czoRUGKYoOfjGPhpfzg.-oKRrZSVdtagEBaLp6TvsjL4gXA4-63UDEH82V8bNAQ&dib_tag=se&keywords=solar+lights&pd_rd_i=B0CTMQGF93&pd_rd_r=5124545c-1f85-47e7-9d9e-16034734ad29&pd_rd_w=Mhhf6&pd_rd_wg=0LbiV&pf_rd_p=23269ab4-b11d-4114-b934-dcff20797bdc&pf_rd_r=STAP9BAZ2PN47F5K7G2H&qid=1717655765&sbo=RZvfv%2F%2FHxDF%2BO5021pAnSA%3D%3D&sprefix=solloar%2Caps%2C349&sr=1-2-e85518be-6d02-428d-a376-352634690690-spons&sp_csd=d2lkZ2V0TmFtZT1zcF9zZWFyY2hfdGhlbWF0aWM&psc=1",
+    title: "Scan Sign Sollar Light",
+    description:"    Joomer 4-Pack Solar Lights Outdoor Pathway Lights Waterproof LED Landscape Lighting for Garden, Lawn, Walkway, and Driveway Decoration (Warm White)",
+    image: require("../images/Products/solarlights.jpg"),
+    price: "$10",
+  },
+];
+export default Products;
