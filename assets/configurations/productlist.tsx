@@ -1,4 +1,4 @@
-const Products = [
+const ProductList = [
   {
     key: 1,
     name: "Scan Sign Sollar Light",
@@ -45,4 +45,4 @@ const Products = [
     price: "$10",
   },
 ];
-export default Products;
+export default ProductList;

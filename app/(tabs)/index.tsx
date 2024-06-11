@@ -1,147 +1,120 @@
-import { Dimensions, Pressable, ScrollView, StyleSheet } from "react-native";
-
-import EditScreenInfo from "@/components/EditScreenInfo";
-import { Text, View } from "@/components/Themed";
-import { PricingCard, Icon, Image, Card, Divider } from "@rneui/themed";
-import Products from "../../assets/configurations/products";
+import "react-native-gesture-handler";
 import {
-  SafeAreaInsetsContext,
+  AntDesign,
+  Entypo,
+  FontAwesome5,
+  SimpleLineIcons,
+} from "@expo/vector-icons";
+import { Header, ListItem, Image } from "@rneui/themed";
+import { Link } from "expo-router";
+import * as React from "react";
+import {
+  Button,
+  Dimensions,
+  Linking,
+  Pressable,
   SafeAreaView,
-} from "react-native-safe-area-context";
-import { Double, Float } from "react-native/Libraries/Types/CodegenTypes";
-import { PreventRemoveProvider } from "@react-navigation/native";
-import { router } from "expo-router";
+  Text,
+  useColorScheme,
+  View,
+} from "react-native";
+import { Drawer } from "react-native-drawer-layout";
+import { Menu, MenuOptions, MenuTrigger } from "react-native-popup-menu";
+import Colors from "@/constants/Colors";
 
-export default function HomeScreen() {
-  let screenWidth = Dimensions.get("window").width;
-  function clickCard(link: string) {
-    router.navigate({
-      pathname: "/webview",
-      params: { link },
-    });
-  }
-  return (
-    <ScrollView>
-      <SafeAreaView
-        style={{
-          flexDirection: "row",
-          flexWrap: "wrap",
-          justifyContent: "space-around",
-          width: "95%",
-        }}
-      >
-        <SafeAreaView
-          style={{
-            flexDirection: "column",
-            flexWrap: "wrap",
-            //justifyContent: "center",
-            //alignSelf: "flex-start",
-            flex: 1,
-            marginTop: -50,
-          }}
-        >
-          {Products.filter((item, i) => i % 2 === 0).map((item, i) => (
-            <PriceCard
-              imageuri={item.image}
-              title={item.title}
-              price={item.price}
-              information={item.description}
-              onclick={() => clickCard(item.link)}
-              key={"col_1_" + i.toString()}
-            />
-          ))}
-        </SafeAreaView>
-        <SafeAreaView
-          style={{
-            flexDirection: "column",
-            flexWrap: "wrap",
-            //justifyContent: "center",
-            flex: 1,
-            marginLeft: 5,
-            marginTop: -50,
-          }}
-        >
-          {Products.filter((item, i) => i % 2 === 1).map((item, i) => (
-            <PriceCard
-              imageuri={item.image}
-              title={item.title}
-              price={item.price}
-              information={item.description}
-              onclick={() => clickCard(item.link)}
-              key={"col_2_" + i.toString()}
-            />
-          ))}
-        </SafeAreaView>
-      </SafeAreaView>
-    </ScrollView>
-  );
-}
-
-export function PriceCard(
-  props: {
-    imageuri: Double;
-    title: string;
-    price: string;
-    information: string;
-    onclick?(): void;
+const drawlist = [
+  {
+    id: 1,
+    name: "Share App",
+    icon: <FontAwesome5 name="user-friends" size={24} color="#52c41a" />,
+    function: "scan",
   },
-  key: string
-) {
+  {
+    id: 2,
+    name: "Help",
+    icon: <Entypo name="help-with-circle" size={24} color="#faad14" />,
+    function: "consultation",
+  },
+  {
+    id: 3,
+    name: "Rating",
+    icon: <AntDesign name="star" size={24} color="#ff190c" />,
+    function: "rating",
+  },
+];
+export default function HomeScreen() {
+  const [open, setOpen] = React.useState(false);
+  let screenWidth = Dimensions.get("window").width;
+  const colorScheme = useColorScheme();
+
   return (
-    <View
-      key={key}
-      style={{
-        width: "100%",
-        borderRadius: 10,
-        borderWidth: 1,
-        borderColor: "lime",
-        flexDirection: "column",
-        marginTop: 5,
-        marginLeft: 10,
+    <Drawer
+      open={open}
+      onOpen={() => setOpen(true)}
+      onClose={() => setOpen(false)}
+      renderDrawerContent={() => {
+        return (
+          <View style={{ backgroundColor: "#e1e8ee", height: "100%" }}>
+            <View style={{ height: "30%", width: "100%" }}>
+              <Image
+                style={{ height: "100%", width: "100%" }}
+                source={require("../../assets/images/icon.png")}
+                resizeMode="cover"
+              />
+            </View>
+            {drawlist.map((item, i) => (
+              <ListItem
+                key={i}
+                bottomDivider
+                containerStyle={{
+                  backgroundColor: "#e1e8ee",
+                  justifyContent: "flex-start",
+                  width: "100%",
+                }}
+                //onPress={() => RunFunction(item.function as string)}
+              >
+                {item.icon}
+                <ListItem.Content right>
+                  <ListItem.Title style={{ color: "#080808" }}></ListItem.Title>
+                </ListItem.Content>
+                <ListItem.Content right>
+                  <ListItem.Title style={{ color: "#080808", width: 120 }}>
+                    {item.name}
+                  </ListItem.Title>
+                </ListItem.Content>
+              </ListItem>
+            ))}
+          </View>
+        );
       }}
     >
-      <Pressable onPress={props.onclick}>
-        <Image
-          style={{ height: 200, width: "100%", borderRadius: 10 }}
-          source={props.imageuri}
-          resizeMode="contain"
-        />
-
-        <Text style={{ fontSize: 16, color: "#2089dc", textAlign: "center" }}>
-          {props.title}
-        </Text>
-        <Divider width={1} />
-        <Text style={{ fontSize: 20, color: "#ff190c", textAlign: "center" }}>
-          {props.price}
-        </Text>
-        <Text
-          style={{
-            fontSize: 13,
-            color: "#aa49eb",
-            textAlign: "left",
-            marginLeft: 2,
-          }}
-        >
-          {props.information}
-        </Text>
-        {/* <PricingCard title={item.title} price={item.price}  /> */}
-      </Pressable>
-    </View>
+      <Header containerStyle={{ height: 90, flexDirection: "row" }}>
+        <SafeAreaView style={{ flexDirection: "row" }}>
+          <Pressable onPress={() => setOpen(true)}>
+            {({ pressed }) => (
+              <Entypo
+                name="list"
+                size={25}
+                color={Colors[colorScheme ?? "light"].text}
+                style={{ marginLeft: 15, opacity: pressed ? 0.5 : 1 }}
+              />
+            )}
+          </Pressable>
+          <Text
+            style={{
+              color: Colors[colorScheme ?? "light"].text,
+              marginLeft: 5,
+              textAlignVertical: "bottom",
+              fontSize: 16,
+              width: screenWidth * 0.72,
+              textAlign: "center",
+            }}
+          >
+            Scan Sign Technology
+          </Text>
+          <SafeAreaView></SafeAreaView>
+        </SafeAreaView>
+      </Header>
+    </Drawer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: "row",
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: "80%",
-  },
-});

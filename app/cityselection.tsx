@@ -13,14 +13,14 @@ import {
 import EditScreenInfo from "@/components/EditScreenInfo";
 import { Text, View } from "@/components/Themed";
 import { router, useLocalSearchParams, useNavigation } from "expo-router";
-import cities from "@/assets/configurations/cities";
+import CityList from "@/assets/configurations/citylist";
 import React, { useRef, useState } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { Input, Icon } from '@rneui/themed';
 
-const CityList = ({ data }) => {
+const CitySelection = ({ data }) => {
   const [selectedLetter, setSelectedLetter] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const colorScheme = useColorScheme();
@@ -169,10 +169,10 @@ const CityList = ({ data }) => {
   );
 };
 
-export default function CityListScreen() {
+export default function CitySelectionScreen() {
   return (
     <View style={{ flex: 1, paddingTop: 50 }}>
-      <CityList data={cities} />
+      <CitySelection data={CityList} />
     </View>
   );
 }

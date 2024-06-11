@@ -136,7 +136,7 @@ export default function HouseExploreScreen(props: { currentcity: string }) {
               >
                 <AntDesign
                   name="pluscircleo"
-                  size={24}
+                  size={25}
                   color={Colors[colorScheme ?? "light"].text}
                 />
               </MenuTrigger>

@@ -32,17 +32,34 @@ export default function TabLayout() {
         name="index"
         options={{
           title: "Home",
+          headerShown: false,
           headerStyle: {
             backgroundColor: "#2089dc",
           },
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="home-city" size={24} color={color} />
           ),
-          headerTitleAlign: "center",
+          /* headerTitleAlign: "center",
           headerTitle: () => (
             <Text style={{ color: Colors[colorScheme ?? "light"].text }}>
               Scan Sign Technology
             </Text>
+          ),
+          headerLeft: () => (
+            <Pressable
+              onPress={() => {
+                 
+              }}
+            >
+              {({ pressed }) => (
+                <MaterialCommunityIcons
+                  name="timeline-help-outline"
+                  size={25}
+                  color={Colors[colorScheme ?? "light"].text}
+                  style={{ marginRight: 20, opacity: pressed ? 0.5 : 1 }}
+                />
+              )}
+            </Pressable>
           ),
           headerRight: () => (
             <Pressable
@@ -62,7 +79,7 @@ export default function TabLayout() {
                 />
               )}
             </Pressable>
-          ),
+          ), */
         }}
       />
       <Tabs.Screen
@@ -87,6 +104,25 @@ export default function TabLayout() {
               </Pressable>
             </Link>
           ), */
+        }}
+      />
+      <Tabs.Screen
+        name="product"
+        options={{
+          title: "Products",
+          headerStyle: {
+            backgroundColor: "#2089dc",
+          },
+          tabBarIcon: ({ color }) => (
+            <AntDesign name="shoppingcart" size={24} color={color} />
+          ),
+          headerTitleAlign: "center",
+          headerTitle: () => (
+            <Text style={{ color: Colors[colorScheme ?? "light"].text }}>
+              Products
+            </Text>
+          ),
+          
         }}
       />
     </Tabs>

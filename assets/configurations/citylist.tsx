@@ -1,4 +1,4 @@
-const cities = [
+const CityList = [
     {
       key: 1,
       name: "Toronto",
@@ -187,5 +187,5 @@ const cities = [
     },
     
   ];
-  export  default cities
+  export  default CityList
   
