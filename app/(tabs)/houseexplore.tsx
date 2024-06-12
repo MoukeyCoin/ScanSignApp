@@ -51,9 +51,9 @@ const menulist = [
   },
   {
     id: 3,
-    name: "Rating",
-    icon: <AntDesign name="staro" size={24} color="#ff190c" />,
-    function: "rating",
+    name: "Link to",
+    icon: <Entypo name="link" size={24} color="#ff190c" />,
+    function: "linkto",
   },
 ];
 export default function HouseExploreScreen(props: { currentcity: string }) {
@@ -63,6 +63,11 @@ export default function HouseExploreScreen(props: { currentcity: string }) {
   const [OverlayVisible, setOverlayVisible] = useState(false);
   const toggleOverlayVisible = () => {
     setOverlayVisible(!OverlayVisible);
+  };
+  const [inputValue, setInputValue] = useState('');
+  const InputChange = (event:any) => {
+    setInputValue(event.nativeEvent.text);
+    
   };
   let City = params.currentcity
     ? (params.currentcity as string)
@@ -79,16 +84,22 @@ export default function HouseExploreScreen(props: { currentcity: string }) {
       //const body = "This is the email body from my Expo app.";
       //const mailto = `mailto:?subject=<span class="math-inline">\{subject\}&body\=</span>{body}`;
       await Linking.openURL("mailto:info@scansign.com");
-    } else if (functionname == "rating") {
+    } else if (functionname == "linkto") {
       setOverlayVisible(true)
       //console.log(OverlayVisible);
     }
     setVisible(false);
   }
   const submitComment = () => {
-    console.log(OverlayVisible)
-    toggleOverlayVisible
+    //console.log(OverlayVisible)
+    //toggleOverlayVisible
     setOverlayVisible(false)
+    console.log(inputValue)
+    router.navigate({
+      pathname: "/webview",
+      params: { link: inputValue },
+    })
+
   }
   return (
     <View style={{ flex: 1 }}>
@@ -202,28 +213,23 @@ export default function HouseExploreScreen(props: { currentcity: string }) {
             //height: "30%",
           }}
         >
-          <Rating
-            type="heart"
-            ratingCount={5}
-            imageSize={50}
-            showRating
-            startingValue={5}
-            jumpValue={0.5}
-            //onFinishRating={this.ratingCompleted}
-          />
-          <Divider />
-          <Text style={{ fontSize: 24, textAlign: "center" }}>Comment</Text>
+          
+          <Text style={{ fontSize: 20, textAlign: "center" }}>User Define Link</Text>
           <Input
             multiline={true}
-            numberOfLines={10}
+            placeholder='Input Website'
+            numberOfLines={1}
             style={{
               borderWidth: 1,
               textAlignVertical: "top",
               textAlign: "left",
+              marginTop:5
             }}
+            value={inputValue} 
+            onChange={InputChange}
           ></Input>
           <Button
-            title="Submit"
+            title="Go"
             titleStyle={{ fontWeight: "700" }}
             buttonStyle={{
               backgroundColor: "rgba(90, 154, 230, 1)",

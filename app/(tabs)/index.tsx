@@ -3,13 +3,21 @@ import {
   AntDesign,
   Entypo,
   FontAwesome5,
+  MaterialIcons,
   SimpleLineIcons,
 } from "@expo/vector-icons";
-import { Header, ListItem, Image } from "@rneui/themed";
+import {
+  Header,
+  ListItem,
+  Image,
+  Divider,
+  Overlay,
+  Input,
+  Button,
+} from "@rneui/themed";
 import { Link } from "expo-router";
 import * as React from "react";
 import {
-  Button,
   Dimensions,
   Linking,
   Pressable,
@@ -21,13 +29,15 @@ import {
 import { Drawer } from "react-native-drawer-layout";
 import { Menu, MenuOptions, MenuTrigger } from "react-native-popup-menu";
 import Colors from "@/constants/Colors";
+import { Rating } from "react-native-ratings";
+import { useState } from "react";
 
 const drawlist = [
   {
     id: 1,
-    name: "Share App",
+    name: "Invite friends",
     icon: <FontAwesome5 name="user-friends" size={24} color="#52c41a" />,
-    function: "scan",
+    function: "invite",
   },
   {
     id: 2,
@@ -37,16 +47,50 @@ const drawlist = [
   },
   {
     id: 3,
+    name: "Email",
+    icon: <MaterialIcons name="email" size={24} color="#2089dc" />,
+    function: "email",
+  },
+  {
+    id: 4,
+    name: "Phone",
+    icon: <Entypo name="phone" size={24} color="#aa49eb" />,
+    function: "phone",
+  },
+  {
+    id: 5,
     name: "Rating",
     icon: <AntDesign name="star" size={24} color="#ff190c" />,
     function: "rating",
   },
 ];
 export default function HomeScreen() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   let screenWidth = Dimensions.get("window").width;
   const colorScheme = useColorScheme();
-
+  const [OverlayVisible, setOverlayVisible] = useState(false);
+  const toggleOverlayVisible = () => {
+    setOverlayVisible(!OverlayVisible);
+  };
+  async function RunFunction(functionname: string) {
+    if (functionname == "invite") {
+    } else if (functionname == "email") {
+      //const subject = "";
+      //const body = "This is the email body from my Expo app.";
+      //const mailto = `mailto:?subject=<span class="math-inline">\{subject\}&body\=</span>{body}`;
+      await Linking.openURL("mailto:info@scansign.com");
+    } else if (functionname == "phone") {
+      await Linking.openURL("tel:+8619925351103");
+    }
+    else if (functionname == "rating") {
+      setOverlayVisible(true)
+    }
+  }
+  const submitComment = () => {
+    //console.log(OverlayVisible)
+    //toggleOverlayVisible
+    setOverlayVisible(false);
+  };
   return (
     <Drawer
       open={open}
@@ -62,28 +106,41 @@ export default function HomeScreen() {
                 resizeMode="cover"
               />
             </View>
-            {drawlist.map((item, i) => (
-              <ListItem
-                key={i}
-                bottomDivider
-                containerStyle={{
-                  backgroundColor: "#e1e8ee",
-                  justifyContent: "flex-start",
-                  width: "100%",
-                }}
-                //onPress={() => RunFunction(item.function as string)}
-              >
-                {item.icon}
-                <ListItem.Content right>
-                  <ListItem.Title style={{ color: "#080808" }}></ListItem.Title>
-                </ListItem.Content>
-                <ListItem.Content right>
-                  <ListItem.Title style={{ color: "#080808", width: 120 }}>
-                    {item.name}
-                  </ListItem.Title>
-                </ListItem.Content>
-              </ListItem>
-            ))}
+            <View style={{ height: "60%" }}>
+              {drawlist.map((item, i) => (
+                <ListItem
+                  key={i}
+                  bottomDivider
+                  containerStyle={{
+                    backgroundColor: "#e1e8ee",
+                    justifyContent: "flex-start",
+                    width: "100%",
+                  }}
+                  onPress={() => RunFunction(item.function as string)}
+                >
+                  {item.icon}
+                  <ListItem.Content right>
+                    <ListItem.Title
+                      style={{ color: "#080808" }}
+                    ></ListItem.Title>
+                  </ListItem.Content>
+                  <ListItem.Content right>
+                    <ListItem.Title style={{ color: "#080808", width: 120 }}>
+                      {item.name}
+                    </ListItem.Title>
+                  </ListItem.Content>
+                </ListItem>
+              ))}
+            </View>
+            <Divider
+              style={{
+                borderColor: "#242424",
+                borderWidth: 1,
+              }}
+            />
+            <Text style={{ textAlign: "center", marginTop: 20 }}>
+              Scan Sign Technology ©{new Date().getFullYear()}{" "}
+            </Text>
           </View>
         );
       }}
@@ -112,7 +169,69 @@ export default function HomeScreen() {
           >
             Scan Sign Technology
           </Text>
-          <SafeAreaView></SafeAreaView>
+          <SafeAreaView>
+            <Overlay
+              animationType="fade"
+              isVisible={OverlayVisible}
+              onBackdropPress={toggleOverlayVisible}
+              overlayStyle={{
+                //position: "absolute",
+                //bottom: 0,
+                width: "90%",
+                backgroundColor: Colors[colorScheme ?? "light"].background,
+                //height: "30%",
+              }}
+            >
+              <Rating
+                type="heart"
+                ratingCount={5}
+                imageSize={50}
+                showRating
+                startingValue={5}
+                jumpValue={0.5}
+                /* reviews={[
+                  'Terrible',
+                  'Bad',     
+                  'Good',
+                  'Amazing',
+                  'Unbelievable',
+
+                ]} */
+                //onFinishRating={this.ratingCompleted}
+              />
+
+              <Divider />
+              <Text style={{ fontSize: 20, textAlign: "center" }}>Comment</Text>
+              <Input
+                multiline={true}
+                //placeholder="Input Website"
+                numberOfLines={10}
+                style={{
+                  borderWidth: 1,
+                  textAlignVertical: "top",
+                  textAlign: "left",
+                  marginTop: 5,
+                }}
+              ></Input>
+              <Button
+                title="Submit"
+                titleStyle={{ fontWeight: "700" }}
+                buttonStyle={{
+                  backgroundColor: "rgba(90, 154, 230, 1)",
+                  borderColor: "transparent",
+                  borderWidth: 0,
+                  borderRadius: 30,
+                }}
+                containerStyle={{
+                  width: 100,
+                  marginVertical: 0,
+                  position: "relative",
+                  left: screenWidth * 0.95 - 150,
+                }}
+                onPress={submitComment}
+              />
+            </Overlay>
+          </SafeAreaView>
         </SafeAreaView>
       </Header>
     </Drawer>

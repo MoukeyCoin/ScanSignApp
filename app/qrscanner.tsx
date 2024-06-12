@@ -224,7 +224,7 @@ export default function QRScannerScreen() {
         style={{
           height: "15%",
           //backgroundColor: "transparent",
-          backgroundColor: "skyblue",
+          backgroundColor: "#2089dc",
           flexDirection: "row",
         }}
       >
@@ -239,7 +239,7 @@ export default function QRScannerScreen() {
                 name="flashlight"
                 size={35}
                 //color={Colors[colorScheme ?? 'light'].text}
-                color="purple" //修改图标颜色
+                color="#cfbe27" //修改图标颜色
                 style={{ marginBottom: 15, opacity: pressed ? 0.5 : 1 }} //按上时透明度0.5，没按上时1
               />
             )}
@@ -259,7 +259,7 @@ export default function QRScannerScreen() {
                 name="picture"
                 size={35}
                 //color={Colors[colorScheme ?? 'light'].text}
-                color="purple" //修改图标颜色
+                color="#52c41a" //修改图标颜色
                 style={{ marginBottom: 15, opacity: pressed ? 0.5 : 1 }} //按上时透明度0.5，没按上时1
               />
             )}

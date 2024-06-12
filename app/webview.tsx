@@ -84,8 +84,10 @@ export default function WebViewScreen(props: { url: string }) {
   const link = params.link == null ? props.url : params.link; //存储最新的webview访问地址
   const [latestlink, setlatestlink] = useState<string | null>(null); //存储最新的webview访问地址
   const [webTitle, setwebTitle] = useState<string | null>(null);
+  const [canGo,setcanGo] = useState<boolean>(false)
   function webViewgoback() {
-    if (latestlink !== null && ref.current != null) {
+    console.log(canGo)
+    if (canGo) {
       ref.current.goBack();
       
     } else {
@@ -231,10 +233,12 @@ export default function WebViewScreen(props: { url: string }) {
         source={{ uri: link.toString() }}
         onNavigationStateChange={(navState) => {
           if (navState.canGoBack) {
-            setlatestlink(navState.url);
+            // make sure if current page can go back
+            setcanGo(true);   
           } else {
-            setlatestlink(null);
+            setcanGo(false);           
           }
+          setlatestlink(navState.url);
           setwebTitle(navState.title);
         }}
       />
