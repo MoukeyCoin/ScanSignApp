@@ -81,9 +81,8 @@ export default function HomeScreen() {
       await Linking.openURL("mailto:info@scansign.com");
     } else if (functionname == "phone") {
       await Linking.openURL("tel:+8619925351103");
-    }
-    else if (functionname == "rating") {
-      setOverlayVisible(true)
+    } else if (functionname == "rating") {
+      setOverlayVisible(true);
     }
   }
   const submitComment = () => {
@@ -234,6 +233,11 @@ export default function HomeScreen() {
           </SafeAreaView>
         </SafeAreaView>
       </Header>
+      <SafeAreaView>
+        <Text style={{ textAlign: "center", marginTop: 20 }}>
+          Scan Sign Technology ©{new Date().getFullYear()}{" "}
+        </Text>
+      </SafeAreaView>
     </Drawer>
   );
 }

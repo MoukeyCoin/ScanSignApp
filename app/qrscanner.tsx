@@ -28,7 +28,7 @@ import * as ImagePicker from "expo-image-picker";
 import { router } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 //import QRCodeReader from "react-native-qrcode-local-image";
-import { BarCodeScanner, Constants } from "expo-barcode-scanner";
+//import { BarCodeScanner, Constants } from "expo-barcode-scanner";
 import { CameraType } from "expo-camera/build/legacy/Camera.types";
 
 //const finderWidth: number = 280;
@@ -92,7 +92,9 @@ export default function QRScannerScreen() {
   async function scanBarcodeFromUrl(url: string) {
     //console.log(url);
     try {
-      const data = await BarCodeScanner.scanFromURLAsync(url);
+      const data = await Camera.scanFromURLAsync(url);
+      //BarCodeScanner has been deleted
+      //const data = await BarCodeScanner.scanFromURLAsync(url);
       if (data) {
         handledata(data[0].data);
       } else {
@@ -141,7 +143,7 @@ export default function QRScannerScreen() {
   function handledata(data: string) {
     if (data.indexOf("http") !== -1) {
       router.navigate({
-        pathname: "/webviewscreen",
+        pathname: "/webview",
         params: { link: data },
       });
     } else {

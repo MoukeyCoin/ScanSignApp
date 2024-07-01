@@ -35,7 +35,6 @@ import { useState } from "react";
 import { Linking } from "react-native";
 import { Rating } from "react-native-ratings";
 
-
 const menulist = [
   {
     id: 1,
@@ -64,10 +63,9 @@ export default function HouseExploreScreen(props: { currentcity: string }) {
   const toggleOverlayVisible = () => {
     setOverlayVisible(!OverlayVisible);
   };
-  const [inputValue, setInputValue] = useState('');
-  const InputChange = (event:any) => {
+  const [inputValue, setInputValue] = useState("");
+  const InputChange = (event: any) => {
     setInputValue(event.nativeEvent.text);
-    
   };
   let City = params.currentcity
     ? (params.currentcity as string)
@@ -85,7 +83,7 @@ export default function HouseExploreScreen(props: { currentcity: string }) {
       //const mailto = `mailto:?subject=<span class="math-inline">\{subject\}&body\=</span>{body}`;
       await Linking.openURL("mailto:info@scansign.com");
     } else if (functionname == "linkto") {
-      setOverlayVisible(true)
+      setOverlayVisible(true);
       //console.log(OverlayVisible);
     }
     setVisible(false);
@@ -93,20 +91,26 @@ export default function HouseExploreScreen(props: { currentcity: string }) {
   const submitComment = () => {
     //console.log(OverlayVisible)
     //toggleOverlayVisible
-    setOverlayVisible(false)
-    console.log(inputValue)
-    router.navigate({
-      pathname: "/webview",
-      params: { link: inputValue },
-    })
-
-  }
+    setOverlayVisible(false);
+    console.log(inputValue);
+    if (inputValue.indexOf("http") !== -1) {
+      router.navigate({
+        pathname: "/webview",
+        params: { link: inputValue },
+      });
+    } else {
+      router.navigate({
+        pathname: "/webview",
+        params: { link: "https://" + inputValue },
+      });
+    }
+  };
   return (
     <View style={{ flex: 1 }}>
       {/* pin header at the top of the page. use header and scrollview*/}
       <Header containerStyle={{ height: 90, flexDirection: "row" }}>
         <SafeAreaView style={{ flexDirection: "row" }}>
-          <Link href="/citylist" asChild>
+          <Link href="/cityselection" asChild>
             <Pressable>
               {({ pressed }) => (
                 <Entypo
@@ -213,19 +217,20 @@ export default function HouseExploreScreen(props: { currentcity: string }) {
             //height: "30%",
           }}
         >
-          
-          <Text style={{ fontSize: 20, textAlign: "center" }}>User Define Link</Text>
+          <Text style={{ fontSize: 20, textAlign: "center" }}>
+            User Define Link
+          </Text>
           <Input
             multiline={true}
-            placeholder='Input Website'
+            placeholder="Input Website"
             numberOfLines={1}
             style={{
               borderWidth: 1,
               textAlignVertical: "top",
               textAlign: "left",
-              marginTop:5
+              marginTop: 5,
             }}
-            value={inputValue} 
+            value={inputValue}
             onChange={InputChange}
           ></Input>
           <Button
