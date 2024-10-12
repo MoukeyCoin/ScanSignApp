@@ -11,6 +11,8 @@ import {
 import { Double, Float } from "react-native/Libraries/Types/CodegenTypes";
 import { PreventRemoveProvider } from "@react-navigation/native";
 import { router } from "expo-router";
+import { useEffect, useState } from "react";
+import { reqGetAllProduct } from "@/api/productsapi";
 
 export default function ProductScreen() {
   let screenWidth = Dimensions.get("window").width;
@@ -19,6 +21,21 @@ export default function ProductScreen() {
       pathname: "/webview",
       params: { link },
     });
+  }
+  const [ProductList, setProductList] = useState<any>({});
+  const [isLoading, setIsLoading] = useState(true);
+
+  //等待后端请求完了再渲染网页
+  useEffect(() => {
+    reqGetAllProduct().then((response: any) => {
+      console.log(response);
+      setProductList(response);
+      setIsLoading(false);
+    });
+  }, []); // 空数组表示这个effect只在组件挂载时运行一次
+  //加载完之前不渲染网页
+  if (isLoading) {
+    return <Text>working hard...</Text>;
   }
   return (
     <ScrollView>
@@ -40,16 +57,18 @@ export default function ProductScreen() {
             marginTop: -50,
           }}
         >
-          {ProductList.filter((item, i) => i % 2 === 0).map((item, i) => (
-            <PriceCard
-              imageuri={item.image}
-              title={item.title}
-              price={item.price}
-              information={item.description}
-              onclick={() => clickCard(item.link)}
-              key={"col_1_" + i.toString()}
-            />
-          ))}
+          {ProductList.filter((item: any, i: number) => i % 2 === 0).map(
+            (item: any, i: number) => (
+              <PriceCard
+                imageuri={item.cover}
+                title={item.title}
+                price={item.subtitle}
+                information={item.description}
+                onclick={() => clickCard(item.link)}
+                key={"col_1_" + i.toString()}
+              />
+            )
+          )}
         </SafeAreaView>
         <SafeAreaView
           style={{
@@ -61,16 +80,18 @@ export default function ProductScreen() {
             marginTop: -50,
           }}
         >
-          {ProductList.filter((item, i) => i % 2 === 1).map((item, i) => (
-            <PriceCard
-              imageuri={item.image}
-              title={item.title}
-              price={item.price}
-              information={item.description}
-              onclick={() => clickCard(item.link)}
-              key={"col_2_" + i.toString()}
-            />
-          ))}
+          {ProductList.filter((item: any, i: number) => i % 2 === 1).map(
+            (item: any, i: number) => (
+              <PriceCard
+                imageuri={item.cover}
+                title={item.title}
+                price={item.subtitle}
+                information={item.description}
+                onclick={() => clickCard(item.link)}
+                key={"col_2_" + i.toString()}
+              />
+            )
+          )}
         </SafeAreaView>
       </SafeAreaView>
     </ScrollView>
@@ -79,7 +100,7 @@ export default function ProductScreen() {
 
 export function PriceCard(
   props: {
-    imageuri: Double;
+    imageuri: string;
     title: string;
     price: string;
     information: string;
@@ -103,7 +124,7 @@ export function PriceCard(
       <Pressable onPress={props.onclick}>
         <Image
           style={{ height: 200, width: "100%", borderRadius: 10 }}
-          source={props.imageuri}
+          source={{uri:props.imageuri}}
           resizeMode="contain"
         />
 

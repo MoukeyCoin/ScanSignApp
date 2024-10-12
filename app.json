@@ -20,7 +20,9 @@
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.moukeycoin.scansignnew"
+      
+      "package": "com.moukeycoin.scansignnew",
+      "permissions": ["INTERNET"]
     },
     "web": {
       "bundler": "metro",
@@ -40,6 +42,14 @@
       },
       "eas": {
         "projectId": "163cd44b-7f55-49a1-844b-269f7f5b9aaf"
+      },
+      "development": {
+        "REACT_APP_API_URL": "http://127.0.0.1:8000/api/",
+        "REACT_APP_FILE_URL": "https://safehomecam.com/files/",
+      },
+      "production": {
+        "REACT_APP_API_URL": "https://safehomecam.com/api/",
+        "REACT_APP_FILE_URL": "https://safehomecam.com/files/",
       }
     }
   }
