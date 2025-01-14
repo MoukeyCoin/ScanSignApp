@@ -59,9 +59,9 @@ export default function QRCodeScreen(props: { content: string }) {
         Alert.alert("an error occured while save qr code: " + error.message);
       });
   }
-
   async function shareQRCode() {
-    ref.toDataURL((data: any) => {
+    if (!ref.current) return;
+    ref.current.toDataURL((data: any) => {
       // console.log(data); // 输出二维码的base64字符串
       // 你可以在此方法内部将base64编码的数据保存为图片
       callback(data);

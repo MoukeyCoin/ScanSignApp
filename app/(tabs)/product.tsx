@@ -22,7 +22,7 @@ export default function ProductScreen() {
       params: { link },
     });
   }
-  const [ProductList, setProductList] = useState<any>({});
+  const [ProductList, setProductList] = useState<Array<any>>([{}]);
   const [isLoading, setIsLoading] = useState(true);
 
   //等待后端请求完了再渲染网页
