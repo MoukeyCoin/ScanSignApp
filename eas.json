@@ -6,9 +6,7 @@
     "development": {
       "developmentClient": true,
       "distribution": "internal",
-      "env": {
-        "ENVIRONMENT": "development"
-      },
+      
     },
     "preview": {
       "distribution": "internal",
@@ -17,9 +15,7 @@
       }
     },
     "production": {
-      "env": {
-        "ENVIRONMENT": "production"
-      },
+     
       "android": {
         "buildType": "apk"
       }
